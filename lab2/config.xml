@@ -1,0 +1,48 @@
+<config>
+	<wireless hosts="accessPoint1" interfaces="wlan*"/>
+	<wireless hosts="accessPoint2" interfaces="wlan*"/>
+	
+	<interface hosts="wirelessHost1" names="wlan0" address="10.0.1.x" netmask="255.255.255.0"/>
+	<interface hosts="wiredHost1" names="eth0" address="10.0.2.x" netmask="255.255.255.0"/>
+	<interface hosts="wiredHost2" names="eth0" address="10.0.3.x" netmask="255.255.255.0"/>
+
+	
+	<interface among="router5 router1" address="10.0.11.x" netmask="255.255.255.0"/>
+	<interface among="router5 router4" address="10.0.6.x" netmask="255.255.255.0"/>
+	<interface among="router5 router3" address="10.0.8.x" netmask="255.255.255.0"/>
+	<interface among="router5 router2" address="10.0.9.x" netmask="255.255.255.0"/>
+	<interface among="router1 router2" address="10.0.4.x" netmask="255.255.255.0"/>
+	<interface among="router1 router4" address="10.0.5.x" netmask="255.255.255.0"/>
+	<interface among="router2 router3" address="10.0.7.x" netmask="255.255.255.0"/>
+	<interface among="router3 router4" address="10.0.10.x" netmask="255.255.255.0"/>
+	
+	<interface hosts="router1" names="eth0" address="10.0.1.x" netmask="255.255.255.0"/>
+	<interface hosts="router2" names="eth3" address="10.0.2.x" netmask="255.255.255.0"/>
+	<interface hosts="router3" names="eth3" address="10.0.3.x" netmask="255.255.255.0"/>
+	<interface hosts="router4" names="eth0" address="10.0.12.x" netmask="255.255.255.0"/>						
+		
+  	<route hosts="wirelessHost1" destination="*" interface="wlan0"/>
+  	<route hosts="wiredHost1" destination="*" interface="eth0"/>
+  	<route hosts="wiredHost2" destination="*" interface="eth0"/>
+  	
+	
+  	<route hosts="router2" destination="10.0.1.0" netmask="255.255.255.0" gateway="router3"/>
+  	<route hosts="router2" destination="10.0.12.0" netmask="255.255.255.0" gateway="router5"/>
+  	
+  	<route hosts="router3" destination="10.0.1.0" netmask="255.255.255.0" gateway="router4"/>
+  	<route hosts="router3" destination="10.0.12.0" netmask="255.255.255.0" gateway="router4"/>
+ 	<route hosts="router3" destination="10.0.2.0" netmask="255.255.255.0" gateway="router5"/> 
+ 	
+ 	<route hosts="router1" destination="10.0.2.0" netmask="255.255.255.0" gateway="router4"/> 
+ 	<route hosts="router1" destination="10.0.3.0" netmask="255.255.255.0" gateway="router5"/> 
+ 	<route hosts="router1" destination="10.0.12.0" netmask="255.255.255.0" gateway="router4"/> 
+ 	
+	<route hosts="router4" destination="10.0.2.0" netmask="255.255.255.0" gateway="router3"/>
+	<route hosts="router4" destination="10.0.3.0" netmask="255.255.255.0" gateway="router5"/>
+	<route hosts="router4" destination="10.0.1.0" netmask="255.255.255.0" gateway="router1"/>
+	
+	<route hosts="router5" destination="10.0.12.0" netmask="255.255.255.0" gateway="router1"/>
+	<route hosts="router5" destination="10.0.2.0" netmask="255.255.255.0" gateway="router2"/>
+	<route hosts="router5" destination="10.0.3.0" netmask="255.255.255.0" gateway="router3"/>       	 	 	  	  		 	 	  	
+
+</config>
